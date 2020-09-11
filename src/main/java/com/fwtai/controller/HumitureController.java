@@ -1,5 +1,6 @@
 package com.fwtai.controller;
 
+import com.fwtai.config.ConfigFile;
 import com.fwtai.service.HumitureService;
 import com.fwtai.tool.ToolClient;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 */
 @RestController
 @CrossOrigin
-@RequestMapping("/humiture")
+@RequestMapping(ConfigFile.api_v100 + "humiture")
 public class HumitureController{
 
     @Resource
