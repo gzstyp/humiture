@@ -15,7 +15,7 @@ public final class ConfigFile implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
-	public final static String api_v100 = "/api/v1.0.0/";
+	public final static String api_v10 = "/api/v1.0/";
 
 	/**自定义code及msg*/
 	public final static int code198 = 198;

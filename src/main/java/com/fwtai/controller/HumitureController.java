@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 */
 @RestController
 @CrossOrigin
-@RequestMapping(ConfigFile.api_v100 + "humiture")
+@RequestMapping(ConfigFile.api_v10 + "humiture")
 public class HumitureController{
 
     @Resource
