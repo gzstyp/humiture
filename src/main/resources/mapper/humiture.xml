@@ -4,9 +4,14 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="humiture">
 
-    <select id="getListData" resultType="HashMap">
+    <!-- 如果id编号对应不上,则需要连接msservser的数据库对比设备id数据一致 -->
+    <select id="getListData" resultType="HashMap" parameterType="ArrayList">
         SELECT cl.DeviceID,cl.Val value,cl.SeqType,de.Name name from Channel cl
         LEFT JOIN Device de on de.ID = cl.DeviceID
+        WHERE cl.DeviceID IN
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 
 </mapper>

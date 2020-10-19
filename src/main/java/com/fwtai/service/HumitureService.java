@@ -2,11 +2,12 @@ package com.fwtai.service;
 
 import com.fwtai.dao.DaoHandle;
 import com.fwtai.tool.ToolClient;
+import com.fwtai.tool.ToolString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 
 /**
  * 楼层的货位号管理
@@ -23,8 +24,15 @@ public class HumitureService{
     @Autowired
     private DaoHandle daoHandle;
 
-    public String listData(){
-        List<Map<String,Object>> list = daoHandle.queryForListMap("humiture.getListData");
-        return ToolClient.queryJson(list);
+    public String listData(final HttpServletRequest request){
+        final String ids = request.getParameter("ids");
+        if(ids == null || ids.length() <= 0){
+            return ToolClient.createJsonFail("参数有误,请添加温湿度所在区域");
+        }
+        final ArrayList<String> lists = ToolString.keysToList(ids);
+        if(lists == null || lists.size() <= 0){
+            return ToolClient.createJsonFail("参数有误");
+        }
+        return ToolClient.queryJson(daoHandle.queryForListMap("humiture.getListData",lists));
     }
 }

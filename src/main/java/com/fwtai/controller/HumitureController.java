@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
@@ -29,7 +30,7 @@ public class HumitureController{
     private HumitureService service;
 
     @GetMapping("listData")
-    public void listData(final HttpServletResponse response){
-        ToolClient.responseJson(service.listData(),response);
+    public void listData(final HttpServletRequest request,final HttpServletResponse response){
+        ToolClient.responseJson(service.listData(request),response);
     }
 }
