@@ -29,6 +29,7 @@ public class HumitureController{
     @Resource
     private HumitureService service;
 
+    //http://192.168.3.108:20000/api/v1.0/humiture/listData?ids=3,5
     @GetMapping("listData")
     public void listData(final HttpServletRequest request,final HttpServletResponse response){
         ToolClient.responseJson(service.listData(request),response);
